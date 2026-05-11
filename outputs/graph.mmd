@@ -1,0 +1,25 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__(<p>__start__</p>)
+	intake(intake)
+	classify(classify)
+	answer(answer)
+	tool(tool)
+	evaluate(evaluate)
+	clarify(clarify)
+	risky_action(risky_action)
+	approval(approval)
+	retry(retry)
+	dead_letter(dead_letter)
+	finalize(finalize)
+	__end__(<p>__end__</p>)
+	__start__ --> intake;
+	intake --> classify;
+	classify --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

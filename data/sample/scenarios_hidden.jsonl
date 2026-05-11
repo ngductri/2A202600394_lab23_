@@ -1,0 +1,15 @@
+{"id":"G01_simple","query":"What are your business hours?","expected_route":"simple","requires_approval":false,"should_retry":false,"tags":["simple","hidden"]}
+{"id":"G02_simple2","query":"What is your return policy?","expected_route":"simple","requires_approval":false,"should_retry":false,"tags":["simple","hidden"]}
+{"id":"G03_tool","query":"Track my shipment for order 7890","expected_route":"tool","requires_approval":false,"should_retry":false,"tags":["tool","hidden"]}
+{"id":"G04_tool2","query":"Search for invoice number INV-2024-001","expected_route":"tool","requires_approval":false,"should_retry":false,"tags":["tool","hidden"]}
+{"id":"G05_tool3","query":"Find all pending tickets for account A-555","expected_route":"tool","requires_approval":false,"should_retry":false,"tags":["tool","hidden"]}
+{"id":"G06_missing","query":"Please handle it","expected_route":"missing_info","requires_approval":false,"should_retry":false,"tags":["clarification","hidden"]}
+{"id":"G07_missing2","query":"Fix it now","expected_route":"missing_info","requires_approval":false,"should_retry":false,"tags":["clarification","hidden"]}
+{"id":"G08_risky","query":"Cancel all pending orders for this customer","expected_route":"risky","requires_approval":true,"should_retry":false,"tags":["hitl","hidden"]}
+{"id":"G09_risky2","query":"Remove user profile and all associated data","expected_route":"risky","requires_approval":true,"should_retry":false,"tags":["hitl","destructive","hidden"]}
+{"id":"G10_risky3","query":"Revoke API access tokens for team workspace","expected_route":"risky","requires_approval":true,"should_retry":false,"tags":["hitl","hidden"]}
+{"id":"G11_risky4","query":"Send bulk notification to all premium users","expected_route":"risky","requires_approval":true,"should_retry":false,"tags":["hitl","hidden"]}
+{"id":"G12_error","query":"Service unavailable when connecting to payment gateway","expected_route":"error","requires_approval":false,"should_retry":true,"tags":["retry","hidden"]}
+{"id":"G13_error2","query":"Request failed with internal server error","expected_route":"error","requires_approval":false,"should_retry":true,"tags":["retry","hidden"]}
+{"id":"G14_dead","query":"Critical crash in authentication module unrecoverable","expected_route":"error","requires_approval":false,"should_retry":true,"max_attempts":1,"tags":["dead_letter","hidden"]}
+{"id":"G15_mixed","query":"Check refund status for order 456","expected_route":"risky","requires_approval":true,"should_retry":false,"tags":["priority_test","hidden"]}

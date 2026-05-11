@@ -1,0 +1,129 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LangGraph Agent Flow Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <h1>LangGraph Agent Flow Studio</h1>
+      <p>Graph-first visualization with realtime execution timeline and HITL control.</p>
+    </header>
+
+    <section class="panel control-strip">
+      <div class="run-toolbar">
+        <h2>Run Flow</h2>
+        <div class="button-row compact run-actions">
+          <button id="runBtn" class="btn primary">Run</button>
+          <button id="resetBtn" class="btn ghost">Reset</button>
+          <button id="approveBtn" class="btn success">Approve</button>
+          <button id="rejectBtn" class="btn danger">Reject</button>
+        </div>
+      </div>
+
+      <div class="controls-grid">
+        <label>Config
+          <input id="configPath" value="configs/lab.yaml" />
+        </label>
+
+        <label>Input
+          <select id="inputMode">
+            <option value="scenario">Scenario</option>
+            <option value="free">Free query</option>
+          </select>
+        </label>
+
+        <label>Scenario
+          <select id="scenarioId"></select>
+        </label>
+
+        <label>Thread ID
+          <input id="threadId" placeholder="web-xxxx" />
+        </label>
+
+        <label>Attempts
+          <input id="maxAttempts" type="number" min="1" max="10" value="3" />
+        </label>
+
+        <label>Free query
+          <input id="freeQuery" placeholder="Type support ticket..." />
+        </label>
+      </div>
+
+      <details class="run-advanced">
+        <summary>Advanced HITL</summary>
+        <div class="controls-grid hitl-grid">
+          <label>Reviewer
+            <input id="reviewer" value="web-reviewer" />
+          </label>
+          <label>Comment
+            <input id="comment" value="decision from web ui" />
+          </label>
+        </div>
+      </details>
+
+      <div id="statusBox" class="status">Ready.</div>
+    </section>
+
+    <section class="viz-layout">
+      <section class="panel graph-main">
+        <div class="graph-head">
+          <h2>Graph Visualization</h2>
+          <div class="button-row compact">
+            <button id="prevStepBtn" class="btn ghost">Prev</button>
+            <button id="nextStepBtn" class="btn ghost">Next</button>
+            <span id="stepIndicator" class="step-indicator">step 0/0</span>
+          </div>
+        </div>
+        <div id="diagramRender" class="mermaid-render">(diagram preview)</div>
+        <details class="diagram-source">
+          <summary>Show Mermaid source</summary>
+          <pre id="diagramBox" class="code">(none)</pre>
+        </details>
+      </section>
+
+      <div id="splitHandle" class="split-handle" title="Drag to resize timeline"></div>
+
+      <section class="panel timeline-side">
+        <h2>Execution Timeline</h2>
+        <div id="kpi" class="kpi-grid">
+          <article><span>Route</span><strong id="kpiRoute">-</strong></article>
+          <article><span>Attempt</span><strong id="kpiAttempt">-</strong></article>
+          <article><span>Eval</span><strong id="kpiEval">-</strong></article>
+          <article><span>Events</span><strong id="kpiEvents">-</strong></article>
+        </div>
+
+        <div class="timeline-body">
+          <ol id="timeline" class="timeline"></ol>
+
+          <h3>Final answer</h3>
+          <pre id="finalAnswer" class="code">(none)</pre>
+
+          <h3>Interrupt payload</h3>
+          <pre id="interruptPayload" class="code">(none)</pre>
+
+          <details class="aux-details" id="metricsDetails">
+            <summary>Metrics</summary>
+            <div id="metricsSummary" class="metrics-summary"></div>
+            <div id="metricsTable" class="table-wrap"></div>
+          </details>
+
+          <details class="aux-details" id="historyDetails">
+            <summary>Checkpoint History (Time Travel)</summary>
+            <div id="historyBox" class="history"></div>
+          </details>
+        </div>
+      </section>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script src="/assets/app.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-.PHONY: install test lint typecheck run-scenarios grade-local clean
+.PHONY: install test lint typecheck run-scenarios grade-local web clean
 
 install:
 	pip install -e '.[dev]'
@@ -17,6 +17,9 @@ run-scenarios:
 
 grade-local:
 	python -m langgraph_agent_lab.cli validate-metrics --metrics outputs/metrics.json
+
+web:
+	uvicorn langgraph_agent_lab.web_server:app --reload
 
 clean:
 	rm -rf .pytest_cache .ruff_cache .mypy_cache htmlcov dist build *.egg-info outputs/*.json

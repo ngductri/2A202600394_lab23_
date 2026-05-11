@@ -1,3 +1,8 @@
+# scenarios_path: data/sample/scenarios.jsonl
+# checkpointer: memory
+# report_path: reports/lab_report.md
+
 scenarios_path: data/sample/scenarios.jsonl
-checkpointer: memory
+checkpointer: postgres
+database_url: postgresql://postgres:postgres@localhost:5432/langgraph_lab
 report_path: reports/lab_report.md

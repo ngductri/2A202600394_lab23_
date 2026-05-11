@@ -161,7 +161,7 @@ make test
 Pick one or more:
 - **Parallel fan-out**: Use `Send()` to run two tools concurrently, merge results via `add` reducer
 - **Real HITL**: Set `LANGGRAPH_INTERRUPT=true`, use `interrupt()` in approval_node
-- **Streamlit UI**: Build approval/reject interface with interrupt/resume
+- **Web UI (FastAPI + HTML)**: Build approval/reject interface with interrupt/resume
 - **Time travel**: Use `get_state_history()` to replay from earlier checkpoint
 - **Crash recovery**: Show SQLite checkpoint survives process kill + restart
 - **Graph diagram**: Export Mermaid diagram via `graph.get_graph().draw_mermaid()`
@@ -178,7 +178,24 @@ Pick one or more:
 | `make typecheck` | Run mypy type checker |
 | `make run-scenarios` | Execute all scenarios → `outputs/metrics.json` |
 | `make grade-local` | Validate metrics.json schema |
+| `make web` | Launch FastAPI + HTML dashboard for flow visualization + HITL demo |
 | `make clean` | Remove caches and generated files |
+
+## Web dashboard (bonus demo)
+
+The project includes a FastAPI + HTML UI with:
+- realtime flow visualizer (node timeline)
+- HITL pause/resume (approve/reject)
+- checkpoint history viewer
+- metrics dashboard
+- Mermaid graph export/view
+
+Run:
+
+```bash
+pip install -e '.[web]'
+make web
+```
 
 ---
 
